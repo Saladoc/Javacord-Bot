@@ -3,7 +3,7 @@ FROM debian:stable-slim
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     mkdir /usr/share/man/man1 && \
-    apt-get install -y --no-install-recommends openjdk-8-jre-headless && \
+    apt-get install -y --no-install-recommends openjdk-11-jre-headless && \
     apt-get autoremove --purge -y && \
     rm -rv /var/lib/apt/lists/* && \
     useradd --no-log-init --shell /bin/false --no-create-home javacord-bot

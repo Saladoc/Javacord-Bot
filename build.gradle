@@ -21,7 +21,7 @@ plugins {
 group 'org.javacord'
 description 'The Javacord Bot'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.11
 mainClassName = 'org.javacord.bot.Main'
 defaultTasks 'build'
 

@@ -33,17 +33,17 @@ public class DocsCommand implements CommandExecutor {
     /**
      * The parameters that indicate searching for class names only.
      */
-    private static final Set<String> classParams = new HashSet<>(Arrays.asList("classes", "class", "c"));
+    private static final Set<String> classParams = Set.of("classes", "class", "c");
 
     /**
      * The parameters that indicate searching for method names only.
      */
-    private static final Set<String> methodParams = new HashSet<>(Arrays.asList("methods", "method", "m"));
+    private static final Set<String> methodParams = Set.of("methods", "method", "m");
 
     /**
      * The parameters that indicate also searching internal packages and the core docs.
      */
-    private static final Set<String> includeAllParams = new HashSet<>(Arrays.asList("all", "a"));
+    private static final Set<String> includeAllParams = Set.of("all", "a");
     
     /**
      * Executes the {@code !docs} command.

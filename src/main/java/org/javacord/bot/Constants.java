@@ -12,6 +12,11 @@ public final class Constants {
      */
     public static final Color JAVACORD_ORANGE = new Color(243, 189, 30);
 
+    /**
+     * The default config directory.
+     */
+    public static final String DEFAULT_CONFIG_DIR = "./bot-config";
+
     private Constants() { /* nope */ }
 
 }

@@ -2,6 +2,7 @@ package org.javacord.bot;
 
 import de.btobastian.sdcf4j.CommandHandler;
 import de.btobastian.sdcf4j.handler.JavacordHandler;
+import org.apache.logging.log4j.LogManager;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.util.logging.ExceptionLogger;
@@ -42,6 +43,9 @@ public class Main {
                     + "If the argument is a relative file path, it is relative to the working directory");
             System.exit(1);
         }
+
+        Path configDir = setupConfig();
+        LogManager.getLogger(Main.class).debug("Config dir set to " + configDir);
 
         DiscordApiBuilder apiBuilder = new DiscordApiBuilder();
 
@@ -90,6 +94,20 @@ public class Main {
         }
 
         Thread.setDefaultUncaughtExceptionHandler(ExceptionLogger.getUncaughtExceptionHandler());
+    }
+
+
+    private static Path setupConfig() throws IOException {
+        String propertyPath = System.getProperty("javacord.config.dir");
+        Path configDir = Paths.get(propertyPath == null ? Constants.DEFAULT_CONFIG_DIR : propertyPath);
+        if (!Files.exists(configDir)) {
+            Files.createDirectories(configDir);
+        }
+        if (Files.isDirectory(configDir)) {
+            return configDir;
+        } else {
+            throw new IllegalStateException("Config path is not a directory");
+        }
     }
 
 }
